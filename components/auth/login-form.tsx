@@ -120,14 +120,6 @@ export function LoginForm({ onSwitchToRegister }: LoginFormProps) {
                 </button>
               </p>
             </div>
-
-            <div className="rounded-lg bg-slate-50 p-3">
-              <p className="mb-2 text-xs font-medium text-slate-600">Akun Demo:</p>
-              <div className="space-y-1 text-xs text-slate-500">
-                <p>Admin: admin@disbun.go.id / admin123</p>
-                <p>Petani: petani@garut.com / petani123</p>
-              </div>
-            </div>
           </form>
         </CardContent>
       </Card>
