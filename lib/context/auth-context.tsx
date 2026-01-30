@@ -79,6 +79,33 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return { success: true };
   }, []);
 
+  const updateProfile = useCallback(async (data: { nama?: string; email?: string; currentPassword?: string; newPassword?: string }): Promise<{ success: boolean; error?: string }> => {
+    if (!user) return { success: false, error: 'User not authenticated' };
+
+    // Simulate API delay
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    const userIndex = mockUsers.findIndex((u) => u.id === user.id);
+    if (userIndex === -1) return { success: false, error: 'User not found' };
+
+    // Validate current password if changing password
+    if (data.newPassword) {
+      if (mockUsers[userIndex].password !== data.currentPassword) {
+        return { success: false, error: 'Kata sandi saat ini salah' };
+      }
+      mockUsers[userIndex].password = data.newPassword;
+    }
+
+    // Update user data
+    if (data.nama) mockUsers[userIndex].nama = data.nama;
+    if (data.email) mockUsers[userIndex].email = data.email;
+
+    const { password: _, ...updatedUser } = mockUsers[userIndex];
+    setUser(updatedUser);
+
+    return { success: true };
+  }, [user]);
+
   const logout = useCallback(() => {
     setUser(null);
   }, []);
@@ -92,6 +119,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         login,
         register,
         logout,
+        updateProfile,
       }}
     >
       {children}

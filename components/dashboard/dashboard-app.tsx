@@ -14,6 +14,7 @@ import {
 import { Sidebar } from '@/components/dashboard/sidebar';
 import { AdminDashboard } from '@/components/dashboard/admin-dashboard';
 import { FarmerDashboard } from '@/components/dashboard/farmer-dashboard';
+import { SettingsPage } from '@/components/dashboard/settings-page';
 import { LoginForm } from '@/components/auth/login-form';
 import { RegisterForm } from '@/components/auth/register-form';
 import { Bell, Menu, X, RefreshCw } from 'lucide-react';
